@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Bar</title>
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" id="searchBar" placeholder="Search items...">
+  </div>
+  <ul class="item-list" id="itemList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <li>Date</li>
+    <li>Grape</li>
+    <li>Mango</li>
+    <li>Orange</li>
+  </ul>
+
+  <script>
+    const searchBar = document.getElementById('searchBar');
+    const itemList = document.getElementById('itemList');
+    const items = Array.from(itemList.getElementsByTagName('li'));
+
+    searchBar.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(query)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
